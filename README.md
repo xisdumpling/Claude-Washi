@@ -1,6 +1,6 @@
 # 🍵 Claude Washi for Obsidian
 
-[![GitHub Release](https://img.shields.io/github/v/release/xishuchkui-code/Claude-Washi?color=D97757&logo=github)](https://github.com/xishuchkui-code/Claude-Washi/releases)
+[![GitHub Release](https://img.shields.io/github/v/release/xisdumpling/Claude-Washi?color=D97757&logo=github)](https://github.com/xisdumpling/Claude-Washi/releases)
 [![Obsidian Theme](https://img.shields.io/badge/Obsidian-Theme-8a3f27?logo=obsidian)](https://obsidian.md)
 [![License](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
 
@@ -49,11 +49,11 @@
 ### 方法一：使用 BRAT 插件（推荐）
 1. 在 Obsidian 中安装并启用 **BRAT** 社区插件。
 2. 打开 BRAT 设置，点击 **Add Beta Theme**。
-3. 输入 GitHub 仓库地址：`xishuchkui-code/Claude-Washi`。
+3. 输入 GitHub 仓库地址：`xisdumpling/Claude-Washi`。
 4. 点击 **Add Theme** 并启用。
 
 ### 方法二：手动安装
-1. 前往 [Releases](https://github.com/xishuchkui-code/Claude-Washi/releases) 页面下载最新发布的 `Claude-Washi.zip`（或 `manifest.json` 和 `theme.css`）。
+1. 前往 [Releases](https://github.com/xisdumpling/Claude-Washi/releases) 页面下载最新发布的 `Claude-Washi.zip`（或 `manifest.json` 和 `theme.css`）。
 2. 将解压出的文件夹放置于你的 Obsidian 仓库目录：`.obsidian/themes/Claude Washi/`。
 3. 打开 Obsidian **设置 → 外观 → 主题**，选择 **`Claude Washi`**。
 
