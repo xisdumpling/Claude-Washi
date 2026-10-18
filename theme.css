@@ -243,9 +243,9 @@ body {
   --modal-radius: 15px;
   --tab-radius-active: 5px;
 
-  --scrollbar-width: 8px;
-  --scrollbar-height: 8px;
-  --scrollbar-native-width: 8px;
+  --scrollbar-width: 5px;
+  --scrollbar-height: 5px;
+  --scrollbar-native-width: 5px;
   --scrollbar-radius: 999px;
   --scrollbar-bg: transparent;
   --scrollbar-thumb-bg: var(--claude-scrollbar);
@@ -493,45 +493,95 @@ body {
   background-color: var(--text-selection) !important;
 }
 
+/* ==============================================================
+   Unified ultra-slim 5px scrollbars everywhere (tables, sidebars, editor)
+   ============================================================== */
 ::-webkit-scrollbar {
-  width: 8px;
-  height: 8px;
+  width: 5px !important;
+  height: 5px !important;
 }
 
 ::-webkit-scrollbar-track {
-  background: transparent;
+  background: transparent !important;
 }
 
 ::-webkit-scrollbar-thumb {
-  background: var(--claude-scrollbar);
-  border: 0;
-  border-radius: 999px;
-  min-height: 36px;
+  background: var(--claude-scrollbar) !important;
+  border: 0 !important;
+  border-radius: 999px !important;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: var(--claude-scrollbar-hover);
+  background: var(--claude-scrollbar-hover) !important;
 }
 
-/* Sidebar navigation scrollbar: easy to grab and distinctly visible */
+/* Explicit coverage for all scrollable views: Left sidebar (1), Main editor (2), Right outline (3), Tables */
 .nav-files-container::-webkit-scrollbar,
 .mod-sidedock .workspace-leaf-content::-webkit-scrollbar,
-.outline::-webkit-scrollbar {
-  width: 8px !important;
+.markdown-source-view.mod-cm6 .cm-scroller::-webkit-scrollbar,
+.markdown-preview-view::-webkit-scrollbar,
+.outline::-webkit-scrollbar,
+.search-result-container::-webkit-scrollbar,
+.backlink-pane::-webkit-scrollbar,
+.outgoing-link-pane::-webkit-scrollbar,
+.table-wrapper::-webkit-scrollbar,
+.markdown-rendered .table-wrapper::-webkit-scrollbar,
+.markdown-source-view.mod-cm6 .cm-embed-block:has(table)::-webkit-scrollbar,
+.markdown-source-view.mod-cm6 .cm-table-widget::-webkit-scrollbar,
+.cm-table-widget-view::-webkit-scrollbar,
+.bases-table-container::-webkit-scrollbar {
+  width: 5px !important;
+  height: 5px !important;
+}
+
+.nav-files-container::-webkit-scrollbar-track,
+.mod-sidedock .workspace-leaf-content::-webkit-scrollbar-track,
+.markdown-source-view.mod-cm6 .cm-scroller::-webkit-scrollbar-track,
+.markdown-preview-view::-webkit-scrollbar-track,
+.outline::-webkit-scrollbar-track,
+.search-result-container::-webkit-scrollbar-track,
+.table-wrapper::-webkit-scrollbar-track,
+.markdown-source-view.mod-cm6 .cm-embed-block:has(table)::-webkit-scrollbar-track,
+.bases-table-container::-webkit-scrollbar-track {
+  background: transparent !important;
 }
 
 .nav-files-container::-webkit-scrollbar-thumb,
 .mod-sidedock .workspace-leaf-content::-webkit-scrollbar-thumb,
-.outline::-webkit-scrollbar-thumb {
-  background: color-mix(in srgb, var(--claude-text) 22%, transparent) !important;
+.markdown-source-view.mod-cm6 .cm-scroller::-webkit-scrollbar-thumb,
+.markdown-preview-view::-webkit-scrollbar-thumb,
+.outline::-webkit-scrollbar-thumb,
+.search-result-container::-webkit-scrollbar-thumb,
+.table-wrapper::-webkit-scrollbar-thumb,
+.markdown-source-view.mod-cm6 .cm-embed-block:has(table)::-webkit-scrollbar-thumb,
+.bases-table-container::-webkit-scrollbar-thumb {
+  background: var(--claude-scrollbar) !important;
   border-radius: 999px !important;
-  min-height: 36px !important;
+  border: 0 !important;
 }
 
 .nav-files-container::-webkit-scrollbar-thumb:hover,
 .mod-sidedock .workspace-leaf-content::-webkit-scrollbar-thumb:hover,
-.outline::-webkit-scrollbar-thumb:hover {
-  background: color-mix(in srgb, var(--claude-text) 45%, transparent) !important;
+.markdown-source-view.mod-cm6 .cm-scroller::-webkit-scrollbar-thumb:hover,
+.markdown-preview-view::-webkit-scrollbar-thumb:hover,
+.outline::-webkit-scrollbar-thumb:hover,
+.search-result-container::-webkit-scrollbar-thumb:hover,
+.table-wrapper::-webkit-scrollbar-thumb:hover,
+.markdown-source-view.mod-cm6 .cm-embed-block:has(table)::-webkit-scrollbar-thumb:hover,
+.bases-table-container::-webkit-scrollbar-thumb:hover {
+  background: var(--claude-scrollbar-hover) !important;
+}
+
+/* Standard CSS scrollbar sizing */
+.nav-files-container,
+.markdown-source-view.mod-cm6 .cm-scroller,
+.markdown-preview-view,
+.outline,
+.search-result-container,
+.table-wrapper,
+.bases-table-container {
+  scrollbar-width: thin !important;
+  scrollbar-color: var(--claude-scrollbar) transparent !important;
 }
 
 .workspace-ribbon {
@@ -2431,56 +2481,6 @@ body.code-styler .markdown-source-view .HyperMD-codeblock[class*=code-styler-lin
 .bases-table-container {
   max-width: 100%;
   overflow: auto;
-}
-
-/* Ultra-slim table and block scrollbars: 5px height */
-.table-wrapper,
-.markdown-rendered .table-wrapper,
-.markdown-source-view.mod-cm6 .cm-embed-block:has(table),
-.markdown-source-view.mod-cm6 .cm-table-widget,
-.cm-table-widget-view,
-.bases-table-container {
-  scrollbar-width: thin !important;
-  scrollbar-color: var(--claude-scrollbar) transparent !important;
-}
-
-.table-wrapper::-webkit-scrollbar,
-.markdown-rendered .table-wrapper::-webkit-scrollbar,
-.markdown-source-view.mod-cm6 .cm-embed-block:has(table)::-webkit-scrollbar,
-.markdown-source-view.mod-cm6 .cm-table-widget::-webkit-scrollbar,
-.cm-table-widget-view::-webkit-scrollbar,
-.bases-table-container::-webkit-scrollbar {
-  height: 5px !important;
-  width: 5px !important;
-}
-
-.table-wrapper::-webkit-scrollbar-track,
-.markdown-rendered .table-wrapper::-webkit-scrollbar-track,
-.markdown-source-view.mod-cm6 .cm-embed-block:has(table)::-webkit-scrollbar-track,
-.markdown-source-view.mod-cm6 .cm-table-widget::-webkit-scrollbar-track,
-.cm-table-widget-view::-webkit-scrollbar-track,
-.bases-table-container::-webkit-scrollbar-track {
-  background: transparent !important;
-}
-
-.table-wrapper::-webkit-scrollbar-thumb,
-.markdown-rendered .table-wrapper::-webkit-scrollbar-thumb,
-.markdown-source-view.mod-cm6 .cm-embed-block:has(table)::-webkit-scrollbar-thumb,
-.markdown-source-view.mod-cm6 .cm-table-widget::-webkit-scrollbar-thumb,
-.cm-table-widget-view::-webkit-scrollbar-thumb,
-.bases-table-container::-webkit-scrollbar-thumb {
-  background: var(--claude-scrollbar) !important;
-  border-radius: 999px !important;
-  border: 0 !important;
-}
-
-.table-wrapper::-webkit-scrollbar-thumb:hover,
-.markdown-rendered .table-wrapper::-webkit-scrollbar-thumb:hover,
-.markdown-source-view.mod-cm6 .cm-embed-block:has(table)::-webkit-scrollbar-thumb:hover,
-.markdown-source-view.mod-cm6 .cm-table-widget::-webkit-scrollbar-thumb:hover,
-.cm-table-widget-view::-webkit-scrollbar-thumb:hover,
-.bases-table-container::-webkit-scrollbar-thumb:hover {
-  background: var(--claude-scrollbar-hover) !important;
 }
 
 .metadata-container,
