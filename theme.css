@@ -635,6 +635,11 @@ body:not(.is-mobile) .workspace-split.mod-sidedock.mod-right-split {
   padding-left: var(--claude-dock-inner);
 }
 
+/* Inset right sidebar tab container so scrollbar never clings directly against the card's right border */
+body:not(.is-mobile) .workspace-split.mod-sidedock.mod-right-split .workspace-tab-container {
+  padding-right: 4px;
+}
+
 body:not(.is-mobile) .workspace-split.mod-sidedock::before {
   content: "";
   position: absolute;
