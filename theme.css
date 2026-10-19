@@ -177,9 +177,16 @@ settings:
    ================================ */
 
 body {
-  --claude-font-serif: "Anthropic Sans Display", "Anthropic Serif Web Text", Georgia, "Times New Roman", "Noto Serif SC", serif;
-  --claude-font-sans: "Anthropic Sans Display", "Anthropic Sans Web Text", "Noto Sans SC", system-ui, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-  --claude-font-mono: "AnthropicMono Nerd Font", "AnthropicMono NF", "Source Han Sans SC", ui-monospace, monospace;
+  /* 基础备选字体链 */
+  --claude-default-font-serif: "Anthropic Sans Display", "Anthropic Serif Web Text", Georgia, "Times New Roman", "Noto Serif SC", serif;
+  --claude-default-font-sans: "Anthropic Sans Display", "Anthropic Sans Web Text", "Noto Sans SC", system-ui, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  --claude-default-font-mono: "AnthropicMono Nerd Font", "AnthropicMono NF", "Source Han Sans SC", ui-monospace, monospace;
+
+  /* 主题字体映射：优先尊重用户在 Obsidian 设置中选定的字体覆盖，未指定时默认使用 Claude 官方字体 */
+  --claude-font-serif: var(--font-text-override, var(--claude-default-font-serif));
+  --claude-font-sans: var(--font-text-override, var(--font-interface-override, var(--claude-default-font-sans)));
+  --claude-font-mono: var(--font-monospace-override, var(--claude-default-font-mono));
+
   --claude-accent: #d97757;
   --claude-radius-s: 4px;
   --claude-radius-m: 8px;
@@ -201,12 +208,15 @@ body {
   --claude-root-tab-min-width: 152px;
   --claude-root-tab-max-width: 340px;
 
-  --font-interface-theme: var(--claude-font-sans);
-  --font-text-theme: var(--claude-font-sans);
-  --font-monospace-theme: var(--claude-font-mono);
-  --font-interface: var(--claude-font-sans);
-  --font-text: var(--claude-font-sans);
-  --font-monospace: var(--claude-font-mono);
+  /* 向 Obsidian 系统注册主题预设字体 */
+  --font-interface-theme: var(--claude-default-font-sans);
+  --font-text-theme: var(--claude-default-font-sans);
+  --font-monospace-theme: var(--claude-default-font-mono);
+
+  /* 完整的优先级回退链：用户覆盖 > 主题预设 */
+  --font-interface: var(--font-interface-override, var(--font-interface-theme));
+  --font-text: var(--font-text-override, var(--font-text-theme));
+  --font-monospace: var(--font-monospace-override, var(--font-monospace-theme));
   --file-line-width: var(--claude-content-width);
   --file-folding-offset: 0;
 
