@@ -187,7 +187,7 @@ settings:
 body {
   --claude-font-serif: "Anthropic Serif Web Text", Georgia, "Times New Roman", "Noto Serif SC", serif;
   --claude-font-sans: "Anthropic Sans Web Text", "Noto Sans SC", system-ui, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-  --claude-font-mono: "Anthropic Mono Variable", "Source Han Sans SC", ui-monospace, monospace;
+  --claude-font-mono: "AnthropicMono Nerd Font", "AnthropicMono NF", "Anthropic Mono Variable", "Source Han Sans SC", ui-monospace, monospace;
   --claude-accent: #d97757;
   --claude-radius-s: 4px;
   --claude-radius-m: 8px;
