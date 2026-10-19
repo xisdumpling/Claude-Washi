@@ -2078,6 +2078,104 @@ input[type="checkbox"].task-list-item-checkbox:checked::after,
   color: inherit;
 }
 
+/* ==============================================================
+   Block edit button (编辑这个区块) - Claude Desktop CDS Refinement
+   ============================================================== */
+.markdown-source-view.mod-cm6 .edit-block-button {
+  top: 10px !important;
+  inset-inline-end: 12px !important;
+  width: 26px !important;
+  height: 26px !important;
+  padding: 0 !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  border-radius: 6px !important;
+  border: 0.5px solid var(--claude-border-15) !important;
+  background-color: color-mix(in srgb, var(--claude-surface-3) 70%, transparent) !important;
+  color: var(--text-muted) !important;
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  box-shadow: 0 1px 3px rgba(31, 30, 29, 0.06) !important;
+  opacity: 0;
+  transition: opacity 160ms cubic-bezier(0.16, 1, 0.3, 1),
+              background-color 140ms ease,
+              color 140ms ease,
+              border-color 140ms ease,
+              transform 140ms cubic-bezier(0.16, 1, 0.3, 1) !important;
+  z-index: 5 !important;
+  cursor: pointer !important;
+}
+
+.theme-dark .markdown-source-view.mod-cm6 .edit-block-button {
+  background-color: color-mix(in srgb, var(--claude-surface-2) 75%, transparent) !important;
+  border-color: rgba(255, 255, 255, 0.08) !important;
+  color: var(--text-muted) !important;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.35), inset 0 1px 0 rgba(255, 255, 255, 0.06) !important;
+}
+
+/* 鼠标悬停在区块容器时，编辑按钮优雅半透明显现 */
+@media (hover: hover) {
+  .markdown-source-view.mod-cm6 .cm-embed-block:not(.cm-table-widget, .cm-lang-base):hover .edit-block-button {
+    opacity: 0.65 !important;
+  }
+
+  .markdown-source-view.mod-cm6 .edit-block-button:hover {
+    opacity: 1 !important;
+    color: var(--claude-accent) !important;
+    border-color: color-mix(in srgb, var(--claude-accent) 45%, transparent) !important;
+    background-color: var(--claude-hover) !important;
+    transform: scale(1.06) !important;
+    box-shadow: 0 3px 8px rgba(0, 0, 0, 0.12) !important;
+  }
+
+  .theme-dark .markdown-source-view.mod-cm6 .edit-block-button:hover {
+    background-color: #2a2a27 !important;
+    border-color: color-mix(in srgb, var(--claude-accent) 55%, transparent) !important;
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.45), inset 0 1px 0 rgba(255, 255, 255, 0.1) !important;
+  }
+}
+
+/* 按钮内部图标尺寸收紧为精致的 14px */
+.markdown-source-view.mod-cm6 .edit-block-button svg {
+  width: 14px !important;
+  height: 14px !important;
+  stroke-width: 1.8 !important;
+}
+
+/* 特别优化 Callout 内的编辑区块按钮：与 Callout 顶边和右内边距对齐 */
+.markdown-source-view.mod-cm6 .cm-embed-block:has(.callout) .edit-block-button {
+  top: 10px !important;
+  inset-inline-end: 12px !important;
+}
+
+/* ==============================================================
+   Tooltips (提示气泡) - 消除粗笨黑块，适配 CDS 柔和浮层
+   ============================================================== */
+.tooltip {
+  background-color: var(--claude-surface-popover) !important;
+  color: var(--claude-text) !important;
+  border: 0.5px solid var(--claude-border-15) !important;
+  border-radius: 6px !important;
+  font-family: var(--claude-font-sans) !important;
+  font-size: 11.5px !important;
+  font-weight: 500 !important;
+  letter-spacing: 0.01em !important;
+  padding: 4px 8px !important;
+  box-shadow: 0 4px 14px -2px rgba(31, 30, 29, 0.15) !important;
+}
+
+.theme-dark .tooltip {
+  background-color: #262624 !important;
+  color: #faf9f5 !important;
+  border: 0.5px solid rgba(255, 255, 255, 0.12) !important;
+  box-shadow: 0 6px 18px -2px rgba(0, 0, 0, 0.55), inset 0 1px 0 rgba(255, 255, 255, 0.08) !important;
+}
+
+.tooltip .tooltip-arrow {
+  display: none !important;
+}
+
 /* Horizontal rules, math and footnotes */
 .markdown-rendered hr,
 .HyperMD-hr {
